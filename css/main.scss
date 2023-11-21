@@ -1,0 +1,97 @@
+@mixin mobile {
+    @media screen and (max-width: 480px) {
+        @content;
+    }
+}
+
+/* RESET */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+    font-size: 21px;
+
+    @include mobile {
+        font-size: 18px;
+    }
+}
+
+/* MAIN */
+
+body {
+    background-color: #3F3E7B;
+    min-height: 100vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0 1.5rem;
+}
+
+.container {
+    position: relative;
+    margin-top: 10rem;
+    max-width: 700px;
+    width: 100%;
+    border-radius: 7px;
+    padding: 1.4rem 1.4rem 1.5rem 1.4rem;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    box-shadow: 3px 3px 15px rgba(0,0,0,.1);
+
+    @include mobile {
+        margin-top: 8rem;
+    }
+
+    #pokemon-name {
+        width: 100%;
+        border: none;
+        outline: none;
+        padding: .8rem 0;
+        background-color: transparent;
+        border-bottom: 3px solid #C1C1C1;
+        transition: border-color .1s;
+
+        &:focus {
+            border-bottom-color: #2e2e2e;
+        }
+    }
+
+    .suggestions-box {
+        position: absolute;
+        top: 5.1rem;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: #fff;
+        max-height: 432px;
+        overflow-y: scroll;
+        border-radius: 6px;
+        width: 89%;
+        box-shadow: 0 1px 10px rgba(0,0,0,.3);
+
+        @include mobile {
+            max-height: 322px
+        }
+
+        .suggest {
+            cursor: pointer;
+            margin: .2rem .8rem;
+            padding: .7rem .8rem;
+            border-radius: 5px;
+            transition: background-color .06s;
+
+            &:first-child {
+                margin-top: .8rem;
+            }
+
+            &:last-child {
+                margin-bottom: .8rem;
+            }
+
+            &:hover {
+                background-color: #EFEFEF;
+            }
+        }
+    }
+}
